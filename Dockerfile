@@ -4,9 +4,7 @@ RUN apk update \
     && apk add --no-cache --virtual .build-dependencies-in-virtual-world openldap-dev \
     && docker-php-ext-install ldap \
     && docker-php-ext-enable  ldap \
-    && apk del .build-dependencies-in-virtual-world;
-
-RUN docker-php-ext-configure ldap --with-libdir=lib/ \
+    && docker-php-ext-configure ldap --with-libdir=lib/ \
     && docker-php-ext-install ldap;
 
 CMD ["php-fpm"]
